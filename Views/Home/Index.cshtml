@@ -1,6 +1,7 @@
 ﻿@using PracticeMVC.Models;
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="well">
@@ -50,17 +51,18 @@
                 <th>日期</th>
                 <th>金額</th>
             </tr>
-            @{
-                var recordList = (List<Records>)ViewBag.RecordList;
-            }
-            @foreach (var item in recordList)
+            @if (Model != null)
             {
-                <tr>
-                    <td>@item.No</td>
-                    <td>@(item.Type == 0 ? "支出" : "收入")</td>
-                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
-                    <td>@item.Amount.ToString("#,0")</td>
-                </tr>
+                int no = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(no++)</td>
+                        <td>@(item.Type == 0 ? "支出" : "收入")</td>
+                        <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Amount.ToString("#,0")</td>
+                    </tr>
+                }
             }
         </table>
     </div>

@@ -7,14 +7,9 @@ namespace PracticeMVC.Models
 {
     public class Records
     {
-        public int No { get; set; }
+        public Guid ID { get; set; }
         public int Type { get; set; }
         public DateTime Date { get; set; }
         public int Amount { get; set; }
-    }
-
-    public class RecordViewModel
-    {
-        public List<Records> RecordList { get; set; }
     }
 }
